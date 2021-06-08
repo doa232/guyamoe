@@ -363,6 +363,9 @@ var reading_button = null;
 	})(updateAllRead);
 
 	window.addEventListener("DOMContentLoaded", () => {
+{% if is_nsfw %}
+		$('#nfsw-modal').modal({backdrop: 'static', keyboard: false});
+{% endif %}
 		listMode("detailed");
 		prettifyLastUpdatedTable();
 		initSearchHandler();
@@ -406,6 +409,17 @@ var reading_button = null;
 		background: none !important;
 		background-color: none !important;
 	}
+
+
+	body.modal-open .page-series{
+		-webkit-filter: blur(4px);
+		-moz-filter: blur(4px);
+		-o-filter: blur(4px);
+		-ms-filter: blur(4px);
+		filter: blur(4px);
+		filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='4');
+	}
+
 </style>
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -486,6 +500,24 @@ var reading_button = null;
 	</div>
 </div>
 {% endif %}
+<div class="modal fade" id="nfsw-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>This series is NSFW</h3>
+      </div>
+      <div class="modal-body">
+        <p>Are you old enough to read it?</p>
+      </div>
+      <div class="modal-footer">
+        <form action="/">
+          <button type="submit" class="btn btn-danger">Get me out of here</button>
+        </form>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">I am 18+</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container-fluid page-series">
 	<div class="bs-docs-section clearfix mt-1">
 		<div class="row justify-content-center">

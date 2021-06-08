@@ -1,0 +1,19 @@
+[Unit]
+Description=HachiRumi
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+Restart=on-failure
+RestartSec=2
+Environment="DJANGO_SETTINGS_MODULE=guyamoe.settings.prod"
+#Environment=ALLOWED_HOSTS=hachirumi.com
+ExecStart=/usr/local/bin/uwsgi --ini /home/hachi/guyamoe/nginx/uwsgi.ini --module guyamoe.wsgi:application --socket /home/hachi/guyamoe/nginx/socket/guya.sock --chmod-socket=666
+StandardOutput=syslog
+StandardError=syslog
+WorkingDirectory=/home/hachi/guyamoe
+
+[Install]
+WantedBy=multi-user.target
+

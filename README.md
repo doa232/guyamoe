@@ -1,5 +1,5 @@
-# hachirumi.mooo.com
-Website for the [Danke Für Lesen](https://hachirumi.mooo.com) scanlation group.
+# hachirumi.com
+Website for the [Hachirumi](https://hachirumi.com) scanlation group.
 Generalized manga reading framework for scanlation groups. This is a fork of [Guya.moe](https://github.com/appu1232/guyamoe), a website focus on Kaguya-sama manga. Most of the nginx configs are from [mahoushoujobu.com](https://github.com/milleniumbug/guyamoe)'s fork.
 
 Difference from the original:

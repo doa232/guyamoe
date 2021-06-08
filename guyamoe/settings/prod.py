@@ -3,7 +3,7 @@ import os
 from .base import *
 
 
-CANONICAL_ROOT_DOMAIN = "hachirumi.mooo.com"
+CANONICAL_ROOT_DOMAIN = "hachirumi.com"
 
 # if you are running your website on http, change this to False
 SECURE_SSL_REDIRECT = False
@@ -22,7 +22,7 @@ X_FRAME_OPTIONS = "ALLOW"
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "hachirumi.mooo.com",
+    "hachirumi.com",
     "localhost",
 ]
 

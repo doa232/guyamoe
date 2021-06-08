@@ -6,7 +6,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name hachirumi.mooo.com ;
+    server_name hachirumi.com ;
 
     # To enable maintenance move this file from homepage/template/homepage/maintenance to the root.
     if (-f /home/hachi/guyamoe/maintenance.html) {

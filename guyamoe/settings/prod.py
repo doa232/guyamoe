@@ -3,13 +3,16 @@ import os
 from .base import *
 
 
-CANONICAL_ROOT_DOMAIN = "danke.moe"
+CANONICAL_ROOT_DOMAIN = "hachirumi.mooo.com"
+
+# if you are running your website on http, change this to False
+SECURE_SSL_REDIRECT = False
+
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
-SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -19,11 +22,9 @@ X_FRAME_OPTIONS = "ALLOW"
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "danke.moe",
+    "hachirumi.mooo.com",
     "localhost",
 ]
-
-CANONICAL_SITE_NAME = "guya.moe"
 
 LOGGING = {
     "version": 1,
@@ -48,7 +49,7 @@ LOGGING = {
 }
 
 
-# CACHES = {"default": {"BACKEND": "django.core.cache.backends.dummy.DummyCache",}}
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.dummy.DummyCache",}}
 
 # CACHES = {
 #     "default": {
@@ -56,12 +57,12 @@ LOGGING = {
 #         "LOCATION": "unique-snowflake",
 #     }
 # }
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
-        "LOCATION": "127.0.0.1:11211",
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
+#         "LOCATION": "127.0.0.1:11211",
+#     }
+# }
 
 # DATABASES = {
 #     "default": {

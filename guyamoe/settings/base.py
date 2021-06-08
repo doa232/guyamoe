@@ -24,7 +24,7 @@ CANONICAL_ROOT_DOMAIN = "localhost:8000"
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost", "hachirumi.mooo.com"]
 
 SITE_ID = 1
 
@@ -53,12 +53,14 @@ INTERNAL_IPS = ("127.0.0.1",)
 
 ROOT_URLCONF = "guyamoe.urls"
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "unique-snowflake",
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+#         "LOCATION": "unique-snowflake",
+#     }
+# }
+
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.dummy.DummyCache",}}
 
 MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -157,12 +159,12 @@ IMGUR_CLIENT_ID = os.environ.get("IMGUR_CLIENT_ID", "")
 MAIL_DISCORD_WEBHOOK_ID = int(os.environ.get("MAIL_DISCORD_WEBHOOK_ID", 1))
 MAIL_DISCORD_WEBHOOK_TOKEN = os.environ.get("MAIL_DISCORD_WEBHOOK_TOKEN", "")
 
-BRANDING_NAME = "Danke fürs Lesen"
+BRANDING_NAME = "Hachirumi"
 BRANDING_DESCRIPTION = "Thank you for reading! A circle that works on random twitter and pixiv one-shots and the occasional cute manga."
-BRANDING_IMAGE_URL = "https://danke.moe/static/img/tumbnail.png"
+BRANDING_IMAGE_URL = "http://hachirumi.mooo.com/static/img/tumbnail.png"
 
-HOME_BRANDING_NAME = "Home for scanlations of Danke fürs Lesen"
+HOME_BRANDING_NAME = "Home for scanlations of Hachirumi"
 HOME_BRANDING_DESCRIPTION = "Read our latest chapters here."
-HOME_BRANDING_IMAGE_URL = "https://danke.moe/static/img/tumbnail.png"
+HOME_BRANDING_IMAGE_URL = "http://hachirumi.mooo.com/static/img/tumbnail.png"
 
 IMAGE_PROXY_URL = "https://proxy.f-ck.me"

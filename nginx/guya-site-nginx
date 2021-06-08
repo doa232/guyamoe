@@ -1,33 +1,20 @@
-upstream guyamoe {
-    server unix:///home/ubuntu/guyamoe/nginx/socket/guya.sock; # for a file socket
+upstream hachi_guyamoe {
+    server unix:///home/hachi/guyamoe/nginx/socket/guya.sock; # for a file socket
 }
 
 server {
-    if ($host = danke.moe) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
     listen 80;
     listen [::]:80;
 
-    server_name danke.moe ;
-    return 404; # managed by Certbot
-}
-
-server {
-#   listen 80;
-#   listen [::]:80;
-
-    server_name danke.moe ;
+    server_name hachirumi.mooo.com ;
 
     # To enable maintenance move this file from homepage/template/homepage/maintenance to the root.
-    if (-f /home/ubuntu/guyamoe/maintenance.html) {
+    if (-f /home/hachi/guyamoe/maintenance.html) {
         return 503;
     }
     error_page 503 @maintenance;
     location @maintenance {
-        root /home/ubuntu/guyamoe/ ;
+        root /home/hachi/guyamoe/ ;
         rewrite ^(.*)$ /maintenance.html break ;
     }
 
@@ -35,7 +22,7 @@ server {
 
     location /media {
         expires 365d;
-        alias /home/ubuntu/guyamoe/media;
+        alias /home/hachi/guyamoe/media;
     }
 
     location ~ ^/static/(.*) {
@@ -58,26 +45,19 @@ server {
             application/xml
             application/rss+xml
             image/svg+xml;
-        root /home/ubuntu/guyamoe;
+        root /home/hachi/guyamoe;
         try_files /static_global/$1 /homepage/static/$1 /reader/static/$1 /static/$1 @process_in_app;
     }
 
     location / {
-        uwsgi_pass guyamoe;
-        include /home/ubuntu/guyamoe/nginx/uwsgi_params;
+        uwsgi_pass hachi_guyamoe;
+        include /home/hachi/guyamoe/nginx/uwsgi_params;
     }
 
     location @process_in_app {
-        uwsgi_pass guyamoe;
-        include /home/ubuntu/guyamoe/nginx/uwsgi_params;
+        uwsgi_pass hachi_guyamoe;
+        include /home/hachi/guyamoe/nginx/uwsgi_params;
     }
-
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/danke.moe/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/danke.moe/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
 
 

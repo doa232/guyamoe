@@ -1,5 +1,5 @@
-# Danke.moe
-Website for the [Danke Für Lesen](https://danke.moe) scanlation group.
+# hachirumi.mooo.com
+Website for the [Danke Für Lesen](https://hachirumi.mooo.com) scanlation group.
 Generalized manga reading framework for scanlation groups. This is a fork of [Guya.moe](https://github.com/appu1232/guyamoe), a website focus on Kaguya-sama manga. Most of the nginx configs are from [mahoushoujobu.com](https://github.com/milleniumbug/guyamoe)'s fork.
 
 Difference from the original:
@@ -62,6 +62,7 @@ sed -i "s|\"o kawaii koto\"|\"$(openssl rand -base64 32)\"|" guyamoe/settings/ba
 6. Upstream repo don't have migrations set up because something. It's possible it will be fixed later, in the meantime do this.
 ```
 mkdir misc/migrations && touch misc/migrations/__init__.py
+python3 manage.py migrate
 ```
 
 7. Create an admin user for Guyamoe.
@@ -125,21 +126,22 @@ pip3 install uwsgi
 Add the user that will be running the app to www-data
 
 ```
-sudo usermod -a -G www-data ubuntu
+sudo usermod -a -G www-data hachi
 ```
 
 Copy the config to appropriate places
 
 ```
-sudo cp nginx/guyamoe.service /etc/systemd/system
-sudo cp nginx/guya-site-nginx /etc/nginx/sites-available/guyamoe
-sudo ln -s /etc/nginx/sites-available/guyamoe /etc/nginx/sites-enabled/guyamoe
+mkdir -p ~/.config/systemd/user/
+cp nginx/hachi.service ~/.config/systemd/user
+sudo cp nginx/guya-site-nginx /etc/nginx/sites-available/hachi
+sudo ln -s /etc/nginx/sites-available/hachi /etc/nginx/sites-enabled/hachi
 ```
 
-To start the server and make start at boot time:
+To start the server and make it start at boot time:
 ```
-systemctl start guyamoe.service
-systemctl enable guyamoe.service
+systemctl start hachi.service
+systemctl enable hachi.service
 ```
 
 Use [certbot](https://certbot.eff.org/) to set up TLS certificate for your own domain.

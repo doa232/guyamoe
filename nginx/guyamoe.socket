@@ -1,9 +1,9 @@
 [Unit]
-Description=Socket for guya.moe
+Description=Socket for hachi
 
 [Socket]
-ListenStream=/home/ubuntu/guyamoe/nginx/socket/guya.sock
-SocketUser=ubuntu
+ListenStream=/home/hachi/guyamoe/nginx/socket/guya.sock
+SocketUser=hachi
 SocketGroup=www-data
 SocketMode=0660
 

@@ -6,7 +6,7 @@ from .base import *
 CANONICAL_ROOT_DOMAIN = "hachirumi.com"
 
 # if you are running your website on http, change this to False
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 
 SECURE_HSTS_SECONDS = 60
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True

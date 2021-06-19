@@ -7,7 +7,7 @@ from .forms import ChapterForm, SeriesForm
 from .models import Chapter, Group, HitCount, Person, Series, Volume
 
 
-# Register your models here.
+
 class HitCountAdmin(admin.ModelAdmin):
     ordering = ("hits",)
     list_display = (
@@ -25,9 +25,22 @@ class HitCountAdmin(admin.ModelAdmin):
         else:
             return obj
 
-
 admin.site.register(HitCount, HitCountAdmin)
-admin.site.register(Person)
+
+
+class PersonAdmin(admin.ModelAdmin):
+    ordering = ("name",)
+    list_display = (
+        "name",
+        "slug",
+    )
+    search_fields = (
+        "name",
+        "slug",
+    )
+
+
+admin.site.register(Person, PersonAdmin)
 
 
 class GroupAdmin(admin.ModelAdmin):
@@ -42,12 +55,16 @@ admin.site.register(Group, GroupAdmin)
 
 class SeriesAdmin(admin.ModelAdmin):
     form = SeriesForm
-    list_display = ("name" ,) # , "latest_chapter"
+    list_display = ("name", "author")
+    search_fields = (
+        "name",
+        "author",
+    )
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         form.base_fields["synopsis"].help_text = 'Here is an example of how to set the author\'s link:\n' + linebreaks(escape('<ul>\n\
-         <li><a href=""><img src="https://i.imgur.com/dQCXZkU.png" alt="twitter"/>Artist\'s Twitter</a><</li>\n\
+         <li><a href=""><img src="https://i.imgur.com/dQCXZkU.png" alt="twitter"/>Artist\'s Twitter</a></li>\n\
          <li><a href=""><img src="https://i.imgur.com/oiVINmy.png" alt="pixiv"/>Artist\'s Pixiv</a></li>\n\
          <li><a href=""><img src="https://i.imgur.com/NVVf9Jl.png" alt="MelonBook"/>Artist\'s MelonBook</a></li>\n\
          <li><a href=""><img src="https://i.imgur.com/DByqIm6.png" alt="FanBox"/>Artist\'s FANBOX</a></li>\n\
@@ -56,10 +73,6 @@ class SeriesAdmin(admin.ModelAdmin):
          <li><a href=""><img src="https://i.imgur.com/mLCeebg.png" alt="Skeb"/>Artist\'s Skeb</a></li>\n\
          </ul>\n'))
         return form
-
-
-# def latest_chapter(self, obj):
-
 
 
 admin.site.register(Series, SeriesAdmin)

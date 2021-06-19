@@ -23,7 +23,7 @@ venv.bak/
 db.sqlite3
 
 #django migrations
-migrations/
+#migrations/
 
 #django collectstatic location
 /static/

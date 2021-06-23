@@ -160,7 +160,7 @@ MAIL_DISCORD_WEBHOOK_ID = int(os.environ.get("MAIL_DISCORD_WEBHOOK_ID", 1))
 MAIL_DISCORD_WEBHOOK_TOKEN = os.environ.get("MAIL_DISCORD_WEBHOOK_TOKEN", "")
 
 BRANDING_NAME = "Hachirumi"
-BRANDING_DESCRIPTION = "Thank you for reading! A circle that works on random twitter and pixiv one-shots and the occasional cute manga."
+BRANDING_DESCRIPTION = "Creator-approved translations by your boy who wants to be a girl, Hachirumi and his small team."
 BRANDING_IMAGE_URL = "http://hachirumi.com/static/img/thumbnail.png"
 
 HOME_BRANDING_NAME = "Home for scanlations of Hachirumi"
